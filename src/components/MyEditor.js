@@ -36,13 +36,12 @@ const MyEditor = ({noteDoc, screenWidth, setEditor}) => {
     useEffect(() => {
         const delay = setTimeout(() => {
             // console.log({title: title, content: content});
-            if(content != null) {
-                const unsub = db.collection(collection).doc(noteDoc.id)
-                    .set({title: title, content: content}, (error) => {
-                        console.error("Error writing document: ", error);
-                    })
-                return () => unsub();
-            }
+            
+            const unsub = db.collection(collection).doc(noteDoc.id)
+                .set({title: title, content: content}, (error) => {
+                    console.error("Error writing document: ", error);
+                })
+            return () => unsub();
         }, 2000)
 
         return () => clearTimeout(delay);
@@ -79,9 +78,9 @@ const MyEditor = ({noteDoc, screenWidth, setEditor}) => {
             <form onSubmit={(e) => e.preventDefault()}>
                 <div className="title-container">
                     {screenWidth < 1024 && <button className="back-button" onClick={() => backButtonHandle()} >Back</button> }
-                    <input className="note-title"
+                    <input required className="note-title"
                         value={title ? title : ""}
-                        onChange={(e) => setTitle(e.target.value)}
+                        onChange={(e) => {e.target.value ? setTitle(e.target.value) : alert("Sorry, erasing the entire title is not allowed")}}
                     />
                     <button type="submit" className="save-button" onClick={() => saveButtonHandle()} >Save</button>
                 </div>

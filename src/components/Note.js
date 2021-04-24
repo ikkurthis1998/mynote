@@ -11,16 +11,21 @@ const Note = ({setNewNote}) => {
     }
 
     const proceedHandle = () => {
-        db.collection("notes").add({title: title}).catch((error) => {
-            console.error("Error writing document: ", error);
-        });
-        setNewNote(false);
+        if(title != null) {
+            db.collection("notes").add({title: title}).catch((error) => {
+                console.error("Error writing document: ", error);
+            });
+            setNewNote(false);
+        }
+        else{
+            alert("Please give a title")
+        }
     }
 
     return (
         <div className="noteform-container">
             <form className="noteform-form" onSubmit={(e) => e.preventDefault()}>
-                <input className="notetitle" type="text" onChange={(e) => titleInputHandle(e)} />
+                <input required className="notetitle" type="text" onChange={(e) => titleInputHandle(e)} />
                 <button type="submit" className="proceed-button" onClick={() => proceedHandle()}>Proceed</button>
             </form>
         </div>
