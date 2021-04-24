@@ -11,14 +11,18 @@ const Note = ({setNewNote}) => {
     }
 
     const proceedHandle = () => {
-        db.collection("notes").add({title: title});
+        db.collection("notes").add({title: title}).catch((error) => {
+            console.error("Error writing document: ", error);
+        });
         setNewNote(false);
     }
 
     return (
         <div className="noteform-container">
-            <input className="notetitle" type="text" onChange={(e) => titleInputHandle(e)} />
-            <button className="proceed-button" onClick={() => proceedHandle()}>Proceed</button>
+            <form className="noteform-form" onSubmit={(e) => e.preventDefault()}>
+                <input className="notetitle" type="text" onChange={(e) => titleInputHandle(e)} />
+                <button type="submit" className="proceed-button" onClick={() => proceedHandle()}>Proceed</button>
+            </form>
         </div>
     )
 }

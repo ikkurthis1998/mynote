@@ -4,8 +4,14 @@
     width: 100%;
 }
 
+.noteform-form {
+    display: flex;
+    width: 100%;
+}
+
 .notetitle {
     border: solid 1px #cccccc;
+    border-top: none;
     /* height: ; */
     flex: 80%;
     /* border: solid; */
@@ -13,10 +19,11 @@
 }
 
 .proceed-button {
-    font-size: 16px;
-    border: solid 1px #cccccc;
+    font-size: 14px;
+    border: none;
+    border-bottom: solid 1px #cccccc;
     background-color: white;
-    flex: 100px;
+    flex: 20%;
     /* border: solid; */
     /* width: 180px; */
 }

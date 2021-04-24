@@ -6,16 +6,18 @@ import { db } from '../firebase_config';
 const NoteList = ({setNoteDoc, setEditor}) => {
     const [newNote, setNewNote] = useState(false);
     const [noteslist, setNoteslist] = useState(null);
+
+    const collection = "notes";
     
     useEffect(() => {
-        const unsub = db.collection("notes").onSnapshot((snap) => {
+        const unsub = db.collection(collection).onSnapshot((snap) => {
             setNoteslist(snap.docs);
         })
 
         return () => {
             unsub()
         }
-    }, [])
+    }, [collection])
 
     const addNote = () => {
         setNewNote(!newNote);
@@ -24,6 +26,15 @@ const NoteList = ({setNoteDoc, setEditor}) => {
     const noteClickHandle = (doc) => {
         setEditor(true);
         setNoteDoc(doc);
+    }
+
+
+    const deleteHandle = (id) => {
+        db.collection(collection).doc(id).delete().then(() => {
+            console.log("Document successfully deleted!");
+        }).catch((error) => {
+            console.error("Error removing document: ", error);
+        });
     }
 
     return (
@@ -35,8 +46,9 @@ const NoteList = ({setNoteDoc, setEditor}) => {
             {
                 noteslist && noteslist.map((doc) => {
                     return (
-                        <div key={doc.id} onClick={() => noteClickHandle(doc)}>
-                            <h1>{doc.data().title}</h1>
+                        <div className="notelist-note-container" key={doc.id}>
+                            <p className="notelist-heading" onClick={() => noteClickHandle(doc)}>{doc.data().title}</p>
+                            <button className="delete-button" onClick={() => deleteHandle(doc.id)}>Delete</button>
                         </div>
                     )
                 })

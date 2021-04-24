@@ -3,12 +3,13 @@
 }
 
 .title-container {
-    height: 40px;
+    height: 38px;
     border: solid 1px #cccccc;
 
     border-bottom: none;
     display: flex;
-    flex-direction: row;
+    /* flex: 100%; */
+    /* flex-direction: row; */
     /* align-items: center; */
     /* justify-content: center; */
 }
@@ -18,15 +19,28 @@
     background-color: white;
     border: none;
     border-right: #cccccc solid 1px;
-    height: 40px;
+    height: 38px;
     flex: 20%;
 }
 
 .note-title {
-    font-size: x-large;
-    display: block;
-    /* margin: auto; */
+    padding: 0px 10px;
+    border: none;
+    font-size: large;
+    /* display: flex; */
+    /* align-items: end; */
+    /* margin-left: auto; */
     /* height: 40px; */
     /* border: solid; */
-    flex: 80%;
+    flex: 60%;
+}
+
+.save-button {
+    font-size: large;
+    background-color: white;
+    border: none;
+    border-left: #cccccc solid 1px;
+    /* border-right: #cccccc solid 1px; */
+    height: 38px;
+    flex: 20%;
 }

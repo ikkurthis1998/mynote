@@ -18,12 +18,10 @@ function App() {
   const updateScreen = () => {
     setScreenWidth(window.innerWidth)
   }
-
-  console.log(screenWidth);
   
   return (
     <div className="App">
-      <h1 className="notelist-heading">MyNotes</h1>
+      <h1 className="notes-heading">MyNotes</h1>
       <div className="play-ground">
         {screenWidth > 1023 ? <div className="notelist-container-large">
                                 <NoteList setEditor={setEditor} setNoteDoc={setNoteDoc} />

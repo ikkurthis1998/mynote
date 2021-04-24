@@ -5,9 +5,36 @@
     border-top: none;
 }
 
+.notelist-note-container {
+    display: flex;
+    height: 50px;
+    border-bottom: solid 1px #cccccc;
+}
+
+.notelist-heading {
+    /* border: solid; */
+    display: flex;
+    font-size: 22px;
+    height: 50px;
+    margin: 0;
+    flex: 70%;
+    justify-content: center;
+    align-items: center;
+}
+
+.delete-button {
+    margin-left: auto;
+    flex: 30%;
+    background-color: white;
+    border: none;
+    border-left: solid 1px #cccccc;
+}
+
 .add-button {
     background-color: white;
-    border: solid 1px #cccccc;
+    border: none;
+    border-bottom: solid 1px #cccccc;
+    border-top: solid 1px #cccccc;
     /* margin: auto; */
     /* display: block; */
     /* padding: 10px; */
@@ -20,9 +47,10 @@
 
 .cancel-button {
     background-color: white;
-    border: solid 1px #cccccc;
+    border: none;
+    border-bottom: solid 1px #cccccc;
     /* border: solid; */
-    font-size: large;
+    font-size: 14px;
     padding: 10px;
     width: 20%;
 }
