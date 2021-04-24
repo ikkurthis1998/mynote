@@ -1,0 +1,22 @@
+.noteform-container {
+    display: flex;
+    /* border: solid; */
+    width: 100%;
+}
+
+.notetitle {
+    border: solid 1px #cccccc;
+    /* height: ; */
+    flex: 80%;
+    /* border: solid; */
+    /* max-width: 100%; */
+}
+
+.proceed-button {
+    font-size: 16px;
+    border: solid 1px #cccccc;
+    background-color: white;
+    flex: 100px;
+    /* border: solid; */
+    /* width: 180px; */
+}

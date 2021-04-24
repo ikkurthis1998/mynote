@@ -1,0 +1,32 @@
+.myeditor-container {
+    /* border: solid; */
+}
+
+.title-container {
+    height: 40px;
+    border: solid 1px #cccccc;
+
+    border-bottom: none;
+    display: flex;
+    flex-direction: row;
+    /* align-items: center; */
+    /* justify-content: center; */
+}
+
+.back-button {
+    font-size: large;
+    background-color: white;
+    border: none;
+    border-right: #cccccc solid 1px;
+    height: 40px;
+    flex: 20%;
+}
+
+.note-title {
+    font-size: x-large;
+    display: block;
+    /* margin: auto; */
+    /* height: 40px; */
+    /* border: solid; */
+    flex: 80%;
+}

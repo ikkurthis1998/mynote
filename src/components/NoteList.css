@@ -1,0 +1,35 @@
+.notelist-container {
+    height: 100vh;
+    /* border: solid; */
+    border: solid 1px #cccccc;
+    border-top: none;
+}
+
+.add-button {
+    background-color: white;
+    border: solid 1px #cccccc;
+    /* margin: auto; */
+    /* display: block; */
+    /* padding: 10px; */
+    /* border: solid; */
+    font-size: xx-large;
+    /* margin-bottom: 5px; */
+    width: 100%;
+
+}
+
+.cancel-button {
+    background-color: white;
+    border: solid 1px #cccccc;
+    /* border: solid; */
+    font-size: large;
+    padding: 10px;
+    width: 20%;
+}
+
+.form-container {
+    /* border: solid 1px #cccccc; */
+    /* margin-top: 10px; */
+    /* border: solid; */
+    display: flex;
+}
