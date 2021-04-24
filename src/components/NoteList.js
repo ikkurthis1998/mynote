@@ -44,16 +44,18 @@ const NoteList = ({setNoteDoc, setEditor}) => {
                 <button onClick={() => addNote()} className={newNote ? "cancel-button" : "add-button"}>{newNote ? "X" : "+"}</button>
                 {newNote && <Note setNewNote={setNewNote} />}
             </div>
-            {
-                noteslist && noteslist.map((doc) => {
-                    return (
-                        <div className="notelist-note-container" key={doc.id}>
-                            <p className="notelist-heading" onClick={() => noteClickHandle(doc)}>{doc.data().title}</p>
-                            <button className="delete-button" onClick={() => deleteHandle(doc.id)}>Delete</button>
-                        </div>
-                    )
-                })
-            }
+            <div className="notes-container">
+                {
+                    noteslist && noteslist.map((doc) => {
+                        return (
+                            <div className="notelist-note-container" key={doc.id}>
+                                <p className="notelist-heading" onClick={() => noteClickHandle(doc)}>{doc.data().title}</p>
+                                <button className="delete-button" onClick={() => deleteHandle(doc.id)}>Delete</button>
+                            </div>
+                        )
+                    })
+                }
+            </div>
         </div>
     )
 }

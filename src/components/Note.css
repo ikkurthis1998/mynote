@@ -6,7 +6,7 @@
 
 .noteform-form {
     /* border: solid; */
-    margin-bottom: 1px;
+    /* margin-bottom: -2px; */
     display: flex;
     width: 100%;
 }
@@ -15,7 +15,7 @@
     border: solid 1px #cccccc;
     border-top: none;
     /* height: ; */
-    flex: 80%;
+    flex: 70%;
     /* border: solid; */
     /* max-width: 100%; */
 }
@@ -25,7 +25,7 @@
     border: none;
     border-bottom: solid 1px #cccccc;
     background-color: white;
-    flex: 20%;
+    flex: 30%;
     /* border: solid; */
     /* width: 180px; */
 }

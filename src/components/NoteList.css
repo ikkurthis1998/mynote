@@ -5,7 +5,13 @@
     border-top: none;
 }
 
+.notes-container {
+    /* border: solid; */
+    margin-top: 1px;
+}
+
 .notelist-note-container {
+    /* margin-top: 3px; */
     display: flex;
     height: 50px;
     border-bottom: solid 1px #cccccc;
@@ -47,7 +53,7 @@
 }
 
 .cancel-button {
-    margin-bottom: 1px;
+    /* margin-bottom: -px; */
     background-color: white;
     border: none;
     border-bottom: solid 1px #cccccc;
@@ -58,6 +64,8 @@
 }
 
 .form-container {
+    height: 40px;
+    /* padding-bottom: -1px; */
     /* border: solid 1px #cccccc; */
     /* margin-top: 10px; */
     /* border: solid; */
