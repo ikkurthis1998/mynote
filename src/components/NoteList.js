@@ -26,6 +26,7 @@ const NoteList = ({setNoteDoc, setEditor}) => {
     const noteClickHandle = (doc) => {
         setEditor(true);
         setNoteDoc(doc);
+        setNewNote(false);
     }
 
 

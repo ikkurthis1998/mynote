@@ -36,12 +36,13 @@ const MyEditor = ({noteDoc, screenWidth, setEditor}) => {
     useEffect(() => {
         const delay = setTimeout(() => {
             // console.log({title: title, content: content});
-            
-            const unsub = db.collection(collection).doc(noteDoc.id)
+            if(content != null && title !=null) {
+                const unsub = db.collection(collection).doc(noteDoc.id)
                 .set({title: title, content: content}, (error) => {
                     console.error("Error writing document: ", error);
                 })
-            return () => unsub();
+                return () => unsub();
+            }
         }, 2000)
 
         return () => clearTimeout(delay);

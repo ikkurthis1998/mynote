@@ -47,6 +47,7 @@
 }
 
 .cancel-button {
+    margin-bottom: 1px;
     background-color: white;
     border: none;
     border-bottom: solid 1px #cccccc;
