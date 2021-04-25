@@ -70,7 +70,7 @@ const MyEditor = ({noteDoc, screenWidth, setEditor}) => {
     const saveButtonHandle = () => {
         db.collection(collection)
         .doc(noteDoc.id)
-        .set({title: title, content: content}, (error) => {
+        .set({title: title, content: content, createdAt: createdAt, updatedAt: new Date().toString()}, (error) => {
             console.error("Error writing document: ", error);
         })
         setEditor(false);
@@ -85,8 +85,8 @@ const MyEditor = ({noteDoc, screenWidth, setEditor}) => {
                     <div className="title-container">
                         {screenWidth < 1024 && <button className="back-button" onClick={() => backButtonHandle()} >Back</button> }
                         <input required className="note-title"
-                            value={title ? title : "loading..."}
-                            onChange={(e) => {e.target.value ? setTitle(e.target.value) : alert("Sorry, erasing the entire title is not allowed")}}
+                            value={title ? title : ""}
+                            onChange={(e) => {e.target.value.length > 0 ? setTitle(e.target.value) : alert("Please enter the title and then erase the unwanted part")}}
                         />
                         <button type="submit" className="save-button" onClick={() => saveButtonHandle()} >Save</button>
                     </div>
@@ -99,8 +99,8 @@ const MyEditor = ({noteDoc, screenWidth, setEditor}) => {
                         </div>
                         <div>
                             <input required className="note-title"
-                                value={title ? title : "loading..."}
-                                onChange={(e) => {e.target.value ? setTitle(e.target.value) : alert("Sorry, erasing the entire title is not allowed")}}
+                                value={title ? title : ""}
+                                onChange={(e) => {e.target.value.length > 0 ? setTitle(e.target.value) : alert("Please enter the title and then erase the unwanted part")}}
                             />
                         </div>
                     </div>
