@@ -106,7 +106,15 @@ const MyEditor = ({noteDoc, screenWidth, setEditor}) => {
                     init={{
                     statusbar: false,
                     menubar: false,
-                    height: "95vh"
+                    height: "95vh",
+                    plugins: [
+                        'advlist autolink link image imagetools media lists charmap print preview hr anchor pagebreak',
+                        'searchreplace wordcount visualblocks visualchars code codesample fullscreen insertdatetime nonbreaking',
+                        'table emoticons template paste help insertdatetime'
+                    ],  
+                    toolbar: 'searchreplace | help | fontselect | code codesample | insertdatetime | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image media quickbars| print preview fullscreen | forecolor backcolor emoticons',
+                    // advlist_bullet_styles: 'square',
+                    // advlist_number_styles: 'lower-alpha,lower-roman,upper-alpha,upper-roman'
                     }}
                     
                     onEditorChange={(e) => setContent(e)}
