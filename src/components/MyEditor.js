@@ -70,6 +70,7 @@ const MyEditor = ({noteDoc, screenWidth, setEditor}) => {
         .set({title: title, content: content}, (error) => {
             console.error("Error writing document: ", error);
         })
+        setEditor(false);
     }
     
 
@@ -77,14 +78,30 @@ const MyEditor = ({noteDoc, screenWidth, setEditor}) => {
     
         <div className="myeditor-container">
             <form onSubmit={(e) => e.preventDefault()}>
-                <div className="title-container">
-                    {screenWidth < 1024 && <button className="back-button" onClick={() => backButtonHandle()} >Back</button> }
-                    <input required className="note-title"
-                        value={title ? title : ""}
-                        onChange={(e) => {e.target.value ? setTitle(e.target.value) : alert("Sorry, erasing the entire title is not allowed")}}
-                    />
-                    <button type="submit" className="save-button" onClick={() => saveButtonHandle()} >Save</button>
-                </div>
+                {screenWidth > 450 && 
+                    <div className="title-container">
+                        {screenWidth < 1024 && <button className="back-button" onClick={() => backButtonHandle()} >Back</button> }
+                        <input required className="note-title"
+                            value={title ? title : "loading..."}
+                            onChange={(e) => {e.target.value ? setTitle(e.target.value) : alert("Sorry, erasing the entire title is not allowed")}}
+                        />
+                        <button type="submit" className="save-button" onClick={() => saveButtonHandle()} >Save</button>
+                    </div>
+                }
+                {screenWidth < 450 && 
+                    <div className="title-container">
+                        <div className="button-container">
+                        <button className="back-button" onClick={() => backButtonHandle()} >Back</button>
+                            <button type="submit" className="save-button" onClick={() => saveButtonHandle()} >Save</button>
+                        </div>
+                        <div>
+                            <input required className="note-title"
+                                value={title ? title : "loading..."}
+                                onChange={(e) => {e.target.value ? setTitle(e.target.value) : alert("Sorry, erasing the entire title is not allowed")}}
+                            />
+                        </div>
+                    </div>
+                }
                 <Editor 
                     init={{
                     statusbar: false,

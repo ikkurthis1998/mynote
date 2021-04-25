@@ -31,6 +31,7 @@ const NoteList = ({setNoteDoc, setEditor}) => {
 
 
     const deleteHandle = (id) => {
+        setEditor(false)
         db.collection(collection).doc(id).delete().then(() => {
             console.log("Document successfully deleted!");
         }).catch((error) => {
@@ -42,9 +43,10 @@ const NoteList = ({setNoteDoc, setEditor}) => {
         <div className="notelist-container">
             <div className="form-container">
                 <button onClick={() => addNote()} className={newNote ? "cancel-button" : "add-button"}>{newNote ? "X" : "+"}</button>
-                {newNote && <Note setNewNote={setNewNote} />}
+                {newNote && <Note setNewNote={setNewNote} setEditor={setEditor} setNoteDoc={setNoteDoc} />}
             </div>
             <div className="notes-container">
+                {!noteslist && <div>Loading</div>}
                 {
                     noteslist && noteslist.map((doc) => {
                         return (

@@ -17,6 +17,10 @@
     border-bottom: solid 1px #cccccc;
 }
 
+.notelist-note-container:hover{
+    cursor: pointer;
+}
+
 .notelist-heading {
     /* border: solid; */
     display: flex;
@@ -37,19 +41,27 @@
     border-left: solid 1px #cccccc;
 }
 
+.delete-button:hover{
+    cursor: pointer;
+}
+
 .add-button {
     background-color: white;
     border: none;
     border-bottom: solid 1px #cccccc;
-    border-top: solid 1px #cccccc;
+    /* border-top: solid 1px #cccccc; */
     /* margin: auto; */
     /* display: block; */
     /* padding: 10px; */
     /* border: solid; */
     font-size: xx-large;
     /* margin-bottom: 5px; */
+    height: 40px;
     width: 100%;
+}
 
+.add-button:hover{
+    cursor: pointer;
 }
 
 .cancel-button {
@@ -61,6 +73,10 @@
     font-size: 14px;
     padding: 10px;
     width: 20%;
+}
+
+.cancel-button:hover {
+    cursor: pointer;
 }
 
 .form-container {

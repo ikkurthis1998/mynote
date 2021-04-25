@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './Note.css';
 import { db } from '../firebase_config';
 
-const Note = ({setNewNote}) => {
+const Note = ({setNewNote, setEditor, setNoteDoc}) => {
 
     const [title, setTitle] = useState(null);
 
@@ -12,10 +12,15 @@ const Note = ({setNewNote}) => {
 
     const proceedHandle = () => {
         if(title != null) {
-            db.collection("notes").add({title: title}).catch((error) => {
+            db.collection("notes").add({title: title}).then(function(docRef) {
+                setNoteDoc(docRef);
+                setNewNote(false);
+                setEditor(true);
+            }).catch((error) => {
                 console.error("Error writing document: ", error);
             });
-            setNewNote(false);
+            
+            // setNoteDoc(doc);
         }
         else{
             alert("Please give a title")
