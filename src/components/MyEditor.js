@@ -7,14 +7,17 @@ const MyEditor = ({noteDoc, screenWidth, setEditor}) => {
 
     const [title, setTitle] = useState(null);
     const [content, setContent] = useState(null);
+    const [createdAt,  setCreatedAt] = useState(null);
     const collection = "notes";
 
     useEffect(() => {
         const unsub = db.collection(collection).doc(noteDoc.id).onSnapshot((snap) => {
             const title = snap.data().title;
             const content = snap.data().content;
+            const createdAt = snap.data().createdAt;
             setTitle(title);
             setContent(content);
+            setCreatedAt(createdAt);
         }, (error) => {
             console.error("Error writing document: ", error);
         })
@@ -38,7 +41,7 @@ const MyEditor = ({noteDoc, screenWidth, setEditor}) => {
             // console.log({title: title, content: content});
             if(content != null && title !=null) {
                 const unsub = db.collection(collection).doc(noteDoc.id)
-                .set({title: title, content: content}, (error) => {
+                .set({title: title, content: content, createdAt: createdAt, updatedAt: new Date().toString()}, (error) => {
                     console.error("Error writing document: ", error);
                 })
                 return () => unsub();
@@ -46,7 +49,7 @@ const MyEditor = ({noteDoc, screenWidth, setEditor}) => {
         }, 2000)
 
         return () => clearTimeout(delay);
-    }, [title, content, noteDoc.id])
+    }, [title, content, createdAt, noteDoc.id])
 
     // var delay = (function(){
     //     var timer = 0;

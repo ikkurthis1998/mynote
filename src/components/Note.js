@@ -12,7 +12,7 @@ const Note = ({setNewNote, setEditor, setNoteDoc}) => {
 
     const proceedHandle = () => {
         if(title != null) {
-            db.collection("notes").add({title: title}).then(function(docRef) {
+            db.collection("notes").add({title: title, createdAt: new Date().toString(), updatedAt: new Date().toString()}).then(function(docRef) {
                 setNoteDoc(docRef);
                 setNewNote(false);
                 setEditor(true);

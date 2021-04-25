@@ -10,7 +10,7 @@ const NoteList = ({setNoteDoc, setEditor}) => {
     const collection = "notes";
     
     useEffect(() => {
-        const unsub = db.collection(collection).onSnapshot((snap) => {
+        const unsub = db.collection(collection).orderBy("updatedAt", "desc").onSnapshot((snap) => {
             setNoteslist(snap.docs);
         })
 
