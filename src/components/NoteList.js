@@ -51,7 +51,7 @@ const NoteList = ({setNoteDoc, setEditor}) => {
                     noteslist && noteslist.map((doc) => {
                         return (
                             <div className="notelist-note-container" key={doc.id}>
-                                <p className="notelist-heading" onClick={() => noteClickHandle(doc)}>{doc.data().title}</p>
+                                <p className="notelist-heading" onClick={() => noteClickHandle(doc)}><span>{doc.data().title}</span></p>
                                 <button className="delete-button" onClick={() => deleteHandle(doc.id)}>Delete</button>
                             </div>
                         )
