@@ -46,7 +46,7 @@ const MyEditor = ({noteDoc, screenWidth, setEditor}) => {
                 })
                 return () => unsub();
             }
-        }, 2000)
+        }, 1500)
 
         return () => clearTimeout(delay);
     }, [title, content, createdAt, noteDoc.id])
@@ -86,7 +86,7 @@ const MyEditor = ({noteDoc, screenWidth, setEditor}) => {
                         {screenWidth < 1024 && <button className="back-button" onClick={() => backButtonHandle()} >Back</button> }
                         <input required className="note-title"
                             value={title ? title : ""}
-                            onChange={(e) => {e.target.value.length > 0 ? setTitle(e.target.value) : alert("Please enter the title and then erase the unwanted part")}}
+                            onChange={(e) => {setTitle(e.target.value)}}
                         />
                         <button type="submit" className="save-button" onClick={() => saveButtonHandle()} >Save</button>
                     </div>
@@ -100,7 +100,7 @@ const MyEditor = ({noteDoc, screenWidth, setEditor}) => {
                         <div>
                             <input required className="note-title"
                                 value={title ? title : ""}
-                                onChange={(e) => {e.target.value.length > 0 ? setTitle(e.target.value) : alert("Please enter the title and then erase the unwanted part")}}
+                                onChange={(e) => {setTitle(e.target.value)}}
                             />
                         </div>
                     </div>
