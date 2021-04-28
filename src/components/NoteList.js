@@ -46,7 +46,7 @@ const NoteList = ({setNoteDoc, setEditor}) => {
                 {newNote && <Note setNewNote={setNewNote} setEditor={setEditor} setNoteDoc={setNoteDoc} />}
             </div>
             <div className="notes-container">
-                {!noteslist && <div>Loading</div>}
+                {!noteslist && <div>Loading...</div>}
                 {
                     noteslist && noteslist.map((doc) => {
                         return (

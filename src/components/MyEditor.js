@@ -12,20 +12,27 @@ const MyEditor = ({noteDoc, setEditor}) => {
     const [title, setTitle] = useState(null);
     const [content, setContent] = useState(null);
     const [createdAt,  setCreatedAt] = useState(null);
+    const [isLoading, setIsLoading] = useState(null);
     const collection = "notes";
 
     useEffect(() => {
-        const unsub = db.collection(collection).doc(noteDoc.id).onSnapshot((snap) => {
-            const title = snap.data().title;
-            const content = snap.data().content;
-            const createdAt = snap.data().createdAt;
-            setTitle(title);
-            setContent(content);
-            setCreatedAt(createdAt);
-        }, (error) => {
+        try {
+            setIsLoading(true);
+            const unsub = db.collection(collection).doc(noteDoc.id).onSnapshot((snap) => {
+                const title = snap.data().title;
+                const content = snap.data().content;
+                const createdAt = snap.data().createdAt;
+                setTitle(title);
+                setContent(content);
+                setCreatedAt(createdAt);
+            })
+            return () => unsub();
+        } catch(error) {
             console.error("Error writing document: ", error);
-        })
-        return () => unsub();
+        }
+        finally {
+            setIsLoading(false);
+        }
     }, [noteDoc.id])
 
     // const contentChangeHandle = (e) => {
@@ -88,8 +95,9 @@ const MyEditor = ({noteDoc, setEditor}) => {
                     <div className="title-container">
                         {screenWidth < 1024 && <button className="back-button" onClick={() => backButtonHandle()} >Back</button> }
                         <input required className="note-title"
-                            value={title ? title : ""}
-                            onChange={(e) => {setTitle(e.target.value)}}
+                            placeholder = "Title"
+                            value = {isLoading ? "Loading..." : title}
+                            onChange = {(e) => {setTitle(e.target.value)}}
                         />
                         <button type="submit" className="save-button" onClick={() => saveButtonHandle()} >Save</button>
                     </div>
@@ -102,7 +110,8 @@ const MyEditor = ({noteDoc, setEditor}) => {
                         </div>
                         <div>
                             <input required className="note-title"
-                                value={title ? title : "Loading..."}
+                                placeholder = "Title"
+                                value = {isLoading ? "Loading..." : title}
                                 onChange={(e) => {setTitle(e.target.value)}}
                             />
                         </div>
@@ -122,9 +131,9 @@ const MyEditor = ({noteDoc, setEditor}) => {
                     // advlist_bullet_styles: 'square',
                     // advlist_number_styles: 'lower-alpha,lower-roman,upper-alpha,upper-roman'
                     }}
-                    
+                    // placeholder = {true ? "Loading..." : ""}
                     onEditorChange={(e) => setContent(e)}
-                    value={content ? content : ""}
+                    value={isLoading ? "Loading..." : content}
                 />
             </form>
         </div>
