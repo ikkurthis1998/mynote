@@ -73,7 +73,6 @@ const MyEditor = ({noteDoc, screenWidth, setEditor}) => {
         .set({title: title, content: content, createdAt: createdAt, updatedAt: new Date().toString()}, (error) => {
             console.error("Error writing document: ", error);
         })
-        setEditor(false);
     }
     
 
@@ -115,7 +114,7 @@ const MyEditor = ({noteDoc, screenWidth, setEditor}) => {
                         'searchreplace wordcount visualblocks visualchars code codesample fullscreen insertdatetime nonbreaking',
                         'table emoticons template paste help insertdatetime noneditable'
                     ],  
-                    toolbar: 'searchreplace | help | fontselect | code codesample | insertdatetime | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image media quickbars| print preview fullscreen | forecolor backcolor emoticons',
+                    toolbar: ' searchreplace | help | fontselect | code codesample | insertdatetime | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image media quickbars| print preview fullscreen | forecolor backcolor emoticons',
                     // advlist_bullet_styles: 'square',
                     // advlist_number_styles: 'lower-alpha,lower-roman,upper-alpha,upper-roman'
                     }}
