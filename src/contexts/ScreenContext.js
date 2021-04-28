@@ -8,14 +8,14 @@ const ScreenContextProvider = (props) => {
     const updateScreen = () => {
         setScreenWidth(window.innerWidth)
     }
-    const something = "nothing";
+    
     useEffect(() => {
         window.addEventListener('resize', updateScreen);
         return () => window.removeEventListener('resize', updateScreen);
     }, []);
 
     return (
-        <ScreenContext.Provider value={{screenWidth, something}}>
+        <ScreenContext.Provider value={screenWidth}>
             { props.children }
         </ScreenContext.Provider>
     );
