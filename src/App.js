@@ -15,7 +15,6 @@ function App() {
   
   return (
     <div className="App">
-      <h1 className="notes-heading">MyNotes</h1>
       <div className="play-ground">
         {screenWidth > 1023 ? <div className="notelist-container-large">
                                 <NoteList setEditor={setEditor} setNoteDoc={setNoteDoc} />

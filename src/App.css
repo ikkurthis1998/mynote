@@ -4,13 +4,6 @@
   flex-direction: column;
 }
 
-.notes-heading {
-  /* border: solid; */
-  margin: 0;
-  padding: 20px;
-  border-bottom: #cccccc solid 1px;
-}
-
 
 .myeditor-container-large {
   width: 80%;
