@@ -1,9 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import {Editor} from '@tinymce/tinymce-react';
 import './MyEditor.css';
 import { db } from '../firebase_config';
+import { ScreenContext } from '../contexts/ScreenContext';
 
-const MyEditor = ({noteDoc, screenWidth, setEditor}) => {
+
+const MyEditor = ({noteDoc, setEditor}) => {
+
+    const screenWidth = useContext(ScreenContext);
 
     const [title, setTitle] = useState(null);
     const [content, setContent] = useState(null);
@@ -98,7 +102,7 @@ const MyEditor = ({noteDoc, screenWidth, setEditor}) => {
                         </div>
                         <div>
                             <input required className="note-title"
-                                value={title ? title : ""}
+                                value={title ? title : "Loading..."}
                                 onChange={(e) => {setTitle(e.target.value)}}
                             />
                         </div>
@@ -120,7 +124,7 @@ const MyEditor = ({noteDoc, screenWidth, setEditor}) => {
                     }}
                     
                     onEditorChange={(e) => setContent(e)}
-                    value={content ? content : ""}
+                    value={content ? content : "Loading..."}
                 />
             </form>
         </div>

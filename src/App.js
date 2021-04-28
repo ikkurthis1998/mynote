@@ -1,23 +1,17 @@
 import './App.css';
-import { useState, useEffect } from 'react';
+import { useState, useContext } from 'react';
 import NoteList from './components/NoteList';
-// import useEditor from './hooks/useEditor';
 import MyEditor from './components/MyEditor';
+import { ScreenContext } from './contexts/ScreenContext';
+
 
 function App() {
 
-  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+  
   const [ editor, setEditor ] = useState(false);
   const [ noteDoc, setNoteDoc ] = useState(null);
 
-  useEffect(() => {
-    window.addEventListener('resize', updateScreen);
-    return () => window.removeEventListener('resize', updateScreen);
-  }, [])
-
-  const updateScreen = () => {
-    setScreenWidth(window.innerWidth)
-  }
+  const screenWidth = useContext(ScreenContext);
   
   return (
     <div className="App">
@@ -31,7 +25,7 @@ function App() {
                                                       </div> 
         }
         {editor &&  <div className={screenWidth > 1023 ? "myeditor-container-large" : "myeditor-container-small"}>
-                        <MyEditor noteDoc={noteDoc} screenWidth={screenWidth}  setEditor={setEditor} />
+                        <MyEditor noteDoc={noteDoc}  setEditor={setEditor} />
                     </div>
         }
       </div>
