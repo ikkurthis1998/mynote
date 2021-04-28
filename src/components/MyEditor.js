@@ -124,7 +124,7 @@ const MyEditor = ({noteDoc, setEditor}) => {
                     }}
                     
                     onEditorChange={(e) => setContent(e)}
-                    value={content ? content : "Loading..."}
+                    value={content ? content : ""}
                 />
             </form>
         </div>
