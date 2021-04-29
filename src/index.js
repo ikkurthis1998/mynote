@@ -13,22 +13,20 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import AuthContextProvider from './contexts/AuthContext';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <ScreenContextProvider>
-      <AuthContextProvider>
-        <NavbarComponent />
-        <Router>
-          <Switch>
-            <Route exact path='/' component={Welcome} />
-            <Route path='/login' component={Login} />
-            <Route path="/signup" component={Signup} />
-            <Route path="/forgotpassword" component={ForgotPassword} />
-            <Route path='/app' component={App} />
-          </Switch>
-        </Router>
-      </AuthContextProvider>
-    </ScreenContextProvider>
-  </React.StrictMode>,
+  <ScreenContextProvider>
+    <AuthContextProvider>
+      <NavbarComponent />
+      <Router>
+        <Switch>
+          <Route exact path='/' component={Welcome} />
+          <Route path='/login' component={Login} />
+          <Route path="/signup" component={Signup} />
+          <Route path="/forgotpassword" component={ForgotPassword} />
+          <Route path='/app' component={App} />
+        </Switch>
+      </Router>
+    </AuthContextProvider>
+  </ScreenContextProvider>,
   document.getElementById('root')
 );
 

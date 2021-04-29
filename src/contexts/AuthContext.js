@@ -1,19 +1,24 @@
 import { createContext, useReducer, useEffect } from "react";
-import { auth } from '../firebase_config';
 
 export const AuthContext = createContext();
 
-const AuthReducer = (state, action) => {
+const AuthReducer = (authState, action) => {
     switch (action.type) {
         case "field":
-            return { ...state, [action.field]: action.value}
+            return { ...authState, [action.field]: action.value}
+        
         case "login":
-            return { ...state, 
-                isLoggedIn: true,
-                isLoading: false,
-                error: ''    
+            return { ...authState, 
+                isLoggedIn: true,    
             }
         
+        case "signup":
+            return { ...authState, 
+                isLoggedIn: true,
+            }
+            
+        default: 
+            break;
     }
 }
 
@@ -22,19 +27,18 @@ const AuthContextProvider = (props) => {
     const iniState = {
         email: '',
         password: '',
-        isLoading: false,
-        error: '',
+        confirmPassword: '',
         isLoggedIn: false
     }
 
-    const [state, dispatch] = useReducer(AuthReducer, iniState);
+    const [authState, dispatch] = useReducer(AuthReducer, iniState);
 
     useEffect(() => {
-        console.log(state);
-    }, [state])
+        // console.log(authState.error);
+    }, [authState])
 
     return(
-        <AuthContext.Provider value={{dispatch}}>
+        <AuthContext.Provider value={{authState, dispatch}}>
             {props.children}
         </AuthContext.Provider>
     )
