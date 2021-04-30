@@ -1,4 +1,5 @@
 import { createContext, useReducer, useEffect } from "react";
+import { auth } from '../firebase_config';
 
 export const AuthContext = createContext();
 
@@ -7,35 +8,52 @@ const AuthReducer = (authState, action) => {
         case "field":
             return { ...authState, [action.field]: action.value}
         
-        case "login":
-            return { ...authState, 
-                isLoggedIn: true,    
+        case "currentUser":
+            return {
+                ...authState,
+                displayName: action.displayName,
+                isLoggedIn: action.isLoggedIn,
+                uid: action.uid,
+                email: action.email
             }
         
-        case "signup":
-            return { ...authState, 
-                isLoggedIn: true,
+        case "guest":
+            return {
+                displayName: 'Sam',
+                email: 'sam@mynote.com',
+                password: 'sam@mynote',
+                confirmPassword: 'sam@mynote',
+                uid: '8qZQkXZ8FASWgLvs1DamKd5Eqzi1',
+                isLoggedIn: true
             }
             
         default: 
-            break;
+            return;
     }
 }
 
 const AuthContextProvider = (props) => {
 
     const iniState = {
+        displayName: '',
         email: '',
         password: '',
         confirmPassword: '',
+        uid: '',
         isLoggedIn: false
     }
 
     const [authState, dispatch] = useReducer(AuthReducer, iniState);
 
     useEffect(() => {
-        // console.log(authState.error);
-    }, [authState])
+        auth.onAuthStateChanged((user) => {
+            if (user !== null) {
+                dispatch({type: "currentUser", displayName: user.displayName, uid: user.uid, email: user.email, isLoggedIn: true})
+            }
+            // console.log(user.uid)
+            // console.log(authState)
+        })
+    }, [])
 
     return(
         <AuthContext.Provider value={{authState, dispatch}}>

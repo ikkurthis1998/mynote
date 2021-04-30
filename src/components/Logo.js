@@ -1,6 +1,6 @@
 
 
-const Logo = ({logoSize}) => {
+const Logo = ({logoSize, name}) => {
 
     const logoOpening = "<";
     const logoClosing = "/>";
@@ -9,7 +9,7 @@ const Logo = ({logoSize}) => {
 
     return(
         <span style={{fontFamily: "'Shadows Into Light', cursive", fontSize: logoSize}}>
-            {logoOpening}MyNote {logoClosing}
+            {logoOpening}{name ? name + "'s" : "My"}Note {logoClosing}
         </span>
     )
 }

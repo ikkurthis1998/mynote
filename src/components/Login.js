@@ -1,6 +1,6 @@
 import { useContext, useState } from 'react';
 import { Card, Form, Button, Container, Alert } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { AuthContext } from '../contexts/AuthContext';
 import { auth } from '../firebase_config';
 
@@ -13,9 +13,11 @@ const Login = () => {
     const login = () => {
         setLoading(true);
         auth.signInWithEmailAndPassword(authState.email, authState.password)
-        .then(() => {
+        .then((userCredential) => {
+            // console.log(userCredential);
+            setError('');
             setLoading(false);
-            dispatch({type: "login"})
+            // dispatch({type: "login", field: "uid", value: userCredential.user.uid})
         }).catch((error) => {
             setLoading(false);
             setError(error.message);
@@ -23,6 +25,10 @@ const Login = () => {
     }
 
     const {authState, dispatch} = useContext(AuthContext);
+    // console.log(authState)
+    if (authState.isLoggedIn) {
+        return(<Redirect to='/' />)
+    } else {
     return(
         <Container className="d-flex align-items-center justify-content-center" style={{minHeight: "80vh"}}>
             <Card className="w-100 p-4" style={{maxWidth: "400px"}}>
@@ -32,6 +38,7 @@ const Login = () => {
                     <Form onSubmit={(e) => {
                                             e.preventDefault();
                                             login();
+                                            
                                             }           
                                     }>
                         <Form.Group id="email" className="w-100 mt-4">
@@ -57,7 +64,7 @@ const Login = () => {
                 </Card.Body>
             </Card>
         </Container>
-    )
+    )}
 }
 
 export default Login;

@@ -5,3 +5,21 @@
   font-family: 'Open Sans', sans-serif;
 }
 
+.play-ground {
+  display: flex;
+  flex-direction: row;
+  /* border: solid; */
+  width: 100%;
+}
+
+.notes-container-large {
+  /* border: solid; */
+  width: 20%;
+  height: 90vh;
+  overflow: scroll;
+}
+
+.editor-container-large {
+  width: 80%;
+}
+
