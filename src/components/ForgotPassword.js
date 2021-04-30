@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Card, Form, Button, Container, Alert } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
 import { auth } from '../firebase_config';
 
 const ForgotPassword = () => {
@@ -35,11 +34,10 @@ const ForgotPassword = () => {
                                     <Form.Control type="email" required onChange={(e) => setEmail(e.target.value)} disabled={loading} />
                                 </Form.Group>
                                 <Button type="submit" className="px-4 py-2 d-flex m-auto mt-4 mb-2" disabled={loading}>{loading ? "Loading" : "Reset Password"}</Button>
-                                <p className="mt-4">Already have an account? <Link to='/login'>LogIn</Link></p>
-                                <p className="mt-4">Already have an account and Forgot Password? <Link to='/forgotpassword'>Click here</Link></p>
                             </Form>
                     }
                 </Card.Body>
+                <small style={{fontSize: "12px"}}>*Please do not refresh this page</small>
             </Card>
         </Container>
     )

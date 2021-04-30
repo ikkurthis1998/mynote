@@ -32,7 +32,7 @@ const UpdateProfile = () => {
         return(<Redirect to='/' />)
     } else {
     return(
-        <Container className="d-flex align-items-center justify-content-center" style={{minHeight: "90vh"}}>
+        <Container className="d-flex align-items-center justify-content-center" style={{minHeight: "70vh"}}>
             <Card className="w-100 p-4" style={{maxWidth: "400px"}}>
                 <Card.Body>
                     <h2 className="text-center mb-4">Update Profile</h2>
@@ -49,6 +49,7 @@ const UpdateProfile = () => {
                         <Button type="submit" className="px-4 py-2 d-flex m-auto mt-4 mb-2" disabled={loading}>{loading ? "Loading..." : "Save"}</Button>
                     </Form>
                 </Card.Body>
+                <small style={{fontSize: "12px"}}>*Please do not refresh this page</small>
             </Card>
         </Container>
     )}
