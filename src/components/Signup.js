@@ -67,7 +67,6 @@ const Signup = () => {
                         <p className="mt-4">Already have an account and Forgot Password? <Link to='/forgotpassword'>Click here</Link></p>
                     </Form>
                 </Card.Body>
-                <small style={{fontSize: "12px"}}>*Please do not refresh this page</small>
             </Card>
         </Container>
     )}

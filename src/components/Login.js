@@ -36,7 +36,7 @@ const Login = () => {
                     <h2 className="text-center mb-4">LogIn</h2>
                     {error && <Alert variant="danger">{error}</Alert>}
                     <Form onSubmit={(e) => {
-                                            e.preventDefault(e);
+                                            e.preventDefault();
                                             login();
                                             
                                             }           
@@ -61,7 +61,6 @@ const Login = () => {
                     </Form>
                     <p className="mt-4">Don't have an account? <Link to='/signup'>SignUp</Link></p>
                     <p className="mt-4">Forgot Password? <Link to='/forgotpassword'>Click here</Link></p>
-                     <small style={{fontSize: "12px"}}>*Please do not refresh this page</small>
                 </Card.Body>
             </Card>
         </Container>

@@ -49,7 +49,6 @@ const UpdateProfile = () => {
                         <Button type="submit" className="px-4 py-2 d-flex m-auto mt-4 mb-2" disabled={loading}>{loading ? "Loading..." : "Save"}</Button>
                     </Form>
                 </Card.Body>
-                <small style={{fontSize: "12px"}}>*Please do not refresh this page</small>
             </Card>
         </Container>
     )}

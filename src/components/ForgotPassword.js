@@ -37,7 +37,6 @@ const ForgotPassword = () => {
                             </Form>
                     }
                 </Card.Body>
-                <small style={{fontSize: "12px"}}>*Please do not refresh this page</small>
             </Card>
         </Container>
     )
