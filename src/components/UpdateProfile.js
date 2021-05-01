@@ -2,9 +2,12 @@ import { useContext, useState } from 'react';
 import { Card, Form, Button, Container, Alert } from 'react-bootstrap';
 import { Redirect } from 'react-router-dom';
 import { AuthContext } from '../contexts/AuthContext';
+import { ScreenContext } from '../contexts/ScreenContext';
 import { auth } from '../firebase_config';
 
 const UpdateProfile = () => {
+
+    const screenWidth = useContext(ScreenContext);
 
     const { authState, dispatch } = useContext(AuthContext);
     const [error, setError] = useState('');
@@ -33,7 +36,7 @@ const UpdateProfile = () => {
     } else {
     return(
         <Container className="d-flex align-items-center justify-content-center" style={{minHeight: "70vh"}}>
-            <Card className="w-100 p-4" style={{maxWidth: "400px"}}>
+            <Card className="w-100 p-4" style={{maxWidth: "400px", border: screenWidth > 1023 ? "" : "none"}}>
                 <Card.Body>
                     <h2 className="text-center mb-4">Update Profile</h2>
                     {error && <Alert variant="danger">{error}</Alert>}

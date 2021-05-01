@@ -60,7 +60,7 @@ const AllNotes = () => {
                                 <h4 className="m-0">{doc.data().title ? doc.data().title : "Untitled"}</h4>
                                 <p className="" style={{fontSize: "12px"}}><span>Last updated at: </span>{new Date(doc.data().updatedAt).toLocaleTimeString()}</p>
                             </div>
-                            <button className="btn btn-primary my-auto" onClick={() => deleteNote(doc)}>Delete</button>
+                            <button className="btn btn-danger my-auto" onClick={() => deleteNote(doc)}>Delete</button>
                         </div>
                     )
                 })}

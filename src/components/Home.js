@@ -14,10 +14,11 @@ const Welcome = () => {
     const { authState, dispatch } = useContext(AuthContext);
     const screenWidth = useContext(ScreenContext);
     const { editorState } = useContext(EditorContext);
+    // console.log(editorState);
 
     return (
         <div className="d-flex align-items-center justify-content-center" style={{minHeight: "80vh"}}>
-            {!authState.uid && <Card className="w-100 p-5" style={{maxWidth: "600px"}}>
+            {!authState.uid && <Card className="w-100 p-5" style={{maxWidth: "600px", border: screenWidth > 1023 ? "" : "none"}}>
                 <Card.Body>
                     <h1 className="text-center mb-5"><span style={{fontWeight: "600"}}>Welcome to </span><p className="mt-3"><Logo logoSize="40px" /></p></h1>
                     <div className="d-flex justify-content-center">

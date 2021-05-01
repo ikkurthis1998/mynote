@@ -1,8 +1,11 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { Card, Form, Button, Container, Alert } from 'react-bootstrap';
+import { ScreenContext } from '../contexts/ScreenContext';
 import { auth } from '../firebase_config';
 
 const ForgotPassword = () => {
+
+    const screenWidth = useContext(ScreenContext);
 
     const [email, setEmail] = useState('');
     const [error, setError] = useState('');
@@ -23,7 +26,7 @@ const ForgotPassword = () => {
 
     return(
         <Container className="d-flex align-items-center justify-content-center" style={{minHeight: "80vh"}}>
-            <Card className="w-100 p-4" style={{maxWidth: "400px"}}>
+            <Card className="w-100 p-4" style={{maxWidth: "400px", border: screenWidth > 1023 ? "" : "none"}}>
                 <Card.Body>
                     <h2 className="text-center mb-4">Forgot Password</h2>
                     {error && <Alert variant="danger">{error}</Alert>}
