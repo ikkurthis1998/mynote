@@ -8,6 +8,8 @@ import { AuthContext } from '../contexts/AuthContext';
 
 const MyEditor = () => {
 
+    // const [isloading, setIsloading] = useState(false);
+
     const screenWidth = useContext(ScreenContext);
     const {editorState, editorDispatch} = useContext(EditorContext);
     const {authState} = useContext(AuthContext);
@@ -90,7 +92,7 @@ const MyEditor = () => {
                         {screenWidth < 1024 && <button style={{width: "120px"}} className="btn btn-primary" onClick={() => backButtonHandle()} >Back</button> }
                         <input required className="w-100 p-2"
                             style={{border: "none", height: "40px"}}
-                            placeholder = "Title"
+                            placeholder = {"Title"}
                             value = {editorState.title}
                             onChange = {(e) => {editorDispatch({type: "field", field: "title", value: e.target.value})}}
                         />
