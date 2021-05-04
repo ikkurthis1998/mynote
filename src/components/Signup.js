@@ -3,7 +3,7 @@ import { Card, Form, Button, Container, Alert } from 'react-bootstrap';
 import { Link, Redirect } from 'react-router-dom';
 import { AuthContext } from '../contexts/AuthContext';
 import { ScreenContext } from '../contexts/ScreenContext';
-import { auth } from '../firebase_config';
+import { auth, usersdb } from '../firebase_config';
 
 const Signup = () => {
 

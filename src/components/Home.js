@@ -17,7 +17,7 @@ const Welcome = () => {
     // console.log(editorState);
 
     return (
-        <div className="d-flex align-items-center justify-content-center" style={{minHeight: "80vh"}}>
+        <div className="d-flex align-items-center justify-content-center" style={{minHeight: "75vh"}}>
             {!authState.uid && <Card className="w-100 p-5" style={{maxWidth: "600px", border: screenWidth > 1023 ? "" : "none"}}>
                 <Card.Body>
                     <h1 className="text-center mb-5"><span style={{fontWeight: "600"}}>Welcome to </span><p className="mt-3"><Logo logoSize="40px" /></p></h1>
